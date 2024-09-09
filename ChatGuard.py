@@ -1,4 +1,5 @@
 import asyncio
+import configparser
 import logging
 import re
 from contextlib import suppress
@@ -14,8 +15,11 @@ from aiogram.exceptions import TelegramBadRequest
 from aiogram.filters import Command
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-TOKEN = "7449600192:AAHybzy-2lSXVjerquFM3EHvcAXcHoKVeYY"
-CHAT_LINK = "https://t.me/+JUi_pG-RbTFlZmVk"
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+TOKEN = config['telegram']['TOKEN']
+CHAT_LINK = config['telegram']['CHAT_LINK']
 
 logging.basicConfig(level=logging.INFO)
 
